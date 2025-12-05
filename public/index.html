@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robot Vacuum Support</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="main-container">
+        <!-- Left Panel: Product Showcase -->
+        <div class="product-panel">
+            <header class="panel-header">
+                <h2>Robot Pilot</h2>
+            </header>
+
+            <div class="product-list">
+                <!-- Primary Product Card -->
+                <div class="product-card primary">
+                    <div class="product-image">
+                        <img src="ilifea4s.jpg" alt="ILIFE A4s Robot Vacuum">
+                    </div>
+                    <div class="product-info">
+                        <h3>ILIFE A4s Robot Vacuum</h3>
+                        <p class="product-desc">Purchased on 2024-05-01</p>
+                        <button class="action-btn" onclick="focusChat()">Connect to Support</button>
+                    </div>
+                </div>
+
+                <!-- Placeholder Card 1 -->
+                <div class="product-card placeholder">
+                    <div class="product-image placeholder-bg">
+                        <span>No Image</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>ILIFE V3s Pro</h3>
+                        <p class="product-desc">Tangle-free suction for pet hair care.</p>
+                        <button class="action-btn secondary" disabled>Not Connected</button>
+                    </div>
+                </div>
+
+                <!-- Placeholder Card 2 -->
+                <div class="product-card placeholder">
+                    <div class="product-image placeholder-bg">
+                        <span>No Image</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>ILIFE A10s</h3>
+                        <p class="product-desc">Laser navigation and mopping system.</p>
+                        <button class="action-btn secondary" disabled>Not Connected</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Chat Interface -->
+        <div class="chat-panel">
+            <header class="chat-header">
+                <div class="header-content">
+                    <div class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 8V4H8"></path>
+                            <rect x="3" y="12" width="18" height="8" rx="2"></rect>
+                            <path d="M5 12V8h2"></path>
+                            <path d="M17 12V8h2"></path>
+                        </svg>
+                    </div>
+                    <h1>Robot Support</h1>
+                </div>
+            </header>
+
+            <div id="chatBox" class="chat-box">
+                <!-- Messages will appear here -->
+                <div class="message bot fade-in">
+                    <div class="message-content">
+                        Hello! I'm your Robot Vacuum support assistant. How can I help you today?
+                    </div>
+                    <div class="timestamp">Just now</div>
+                </div>
+            </div>
+
+            <div class="input-area-wrapper">
+                <div class="input-area">
+                    <input id="userInput" type="text" placeholder="Type your message..." autocomplete="off" />
+                    <button id="sendBtn" onclick="sendMessage()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

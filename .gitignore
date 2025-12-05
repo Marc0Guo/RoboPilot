@@ -1,0 +1,50 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output (if using bundlers or frameworks later)
+dist/
+build/
+
+# Cache
+.cache/
+.temp/
+*.tsbuildinfo
+
+# Dependency directories
+bower_components/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editors/IDE general
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# Production deployment config (adjust if needed)
+.deployment
+
+# Optional: lock files (if switching package managers often)
+# package-lock.json
+# yarn.lock
+
+# Secret AI prompt docs (if needed)
+claude.md
+
+# Public temporary files (if added later)
+public/tmp/
