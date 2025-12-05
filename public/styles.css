@@ -35,22 +35,40 @@ body {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 32px;
 }
 
 .panel-header h2 {
     font-size: 24px;
     font-weight: 700;
     color: #1a1a1a;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
 }
 
-.product-list {
+.section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 8px;
+}
+
+.product-list, .expert-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
     width: 100%;
 }
 
@@ -89,6 +107,12 @@ body {
     object-fit: cover;
 }
 
+.expert-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; /* Circle for experts */
+}
+
 .placeholder-bg {
     background: #e0e0e0;
     color: #757575;
@@ -100,7 +124,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .product-info h3 {
@@ -113,6 +137,25 @@ body {
     font-size: 14px;
     color: #666;
     line-height: 1.4;
+}
+
+.product-desc.role {
+    font-weight: 500;
+    color: #333;
+}
+
+.product-desc.email {
+    color: #4a7dff;
+}
+
+.product-desc.availability {
+    font-size: 13px;
+    color: #28a745; /* Green for available */
+    font-weight: 500;
+}
+
+.product-desc.availability.unavailable {
+    color: #dc3545; /* Red for unavailable */
 }
 
 .action-btn {
@@ -357,11 +400,20 @@ body {
         flex-direction: row; /* Keep cards horizontal on mobile if space allows */
     }
 
+    .expert-card {
+         flex-direction: row;
+    }
+
     /* Adjust for very small screens if needed */
     @media (max-width: 480px) {
         .product-card {
             flex-direction: column;
             text-align: center;
+        }
+
+        .expert-card {
+             flex-direction: column;
+             text-align: center;
         }
 
         .action-btn {
