@@ -15,6 +15,11 @@ function focusChat() {
     userInput.focus();
 }
 
+function sendFAQ(text) {
+    userInput.value = text;
+    sendMessage();
+}
+
 function formatTime(date) {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
@@ -24,22 +29,26 @@ function addMessage(sender, text) {
     const msgDiv = document.createElement("div");
     msgDiv.className = `message ${isUser ? 'user' : 'bot'}`;
 
-    // Message Content
     const contentDiv = document.createElement("div");
     contentDiv.className = "message-content";
-    contentDiv.textContent = text;
 
-    // Timestamp
+    // Markdown → HTML (for bot only)
+    if (!isUser) {
+        contentDiv.innerHTML = marked.parse(text);
+    } else {
+        contentDiv.textContent = text;
+    }
+
     const timeDiv = document.createElement("div");
     timeDiv.className = "timestamp";
     timeDiv.textContent = formatTime(new Date());
 
     msgDiv.appendChild(contentDiv);
     msgDiv.appendChild(timeDiv);
-
     chatBox.appendChild(msgDiv);
     scrollToBottom();
 }
+
 
 function scrollToBottom() {
     chatBox.scrollTo({
@@ -124,3 +133,69 @@ userInput.addEventListener("keypress", (e) => {
         sendMessage();
     }
 });
+
+// Fetch and display tickets
+async function fetchTickets() {
+    try {
+        const response = await fetch('ticket.json');
+        if (!response.ok) {
+            throw new Error('Failed to load tickets');
+        }
+        const tickets = await response.json();
+        renderTickets(tickets);
+    } catch (error) {
+        console.error('Error loading tickets:', error);
+        const tableBody = document.getElementById('ticketTableBody');
+        if (tableBody) {
+            tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px;">Failed to load ticket data.</td></tr>';
+        }
+    }
+}
+
+function renderTickets(tickets) {
+    const tableBody = document.getElementById('ticketTableBody');
+    if (!tableBody) return;
+
+    tableBody.innerHTML = '';
+
+    tickets.forEach(ticket => {
+        const row = document.createElement('tr');
+
+        // Determine status class
+        let statusClass = 'status-badge';
+        if (ticket.status === 'Open') statusClass += ' status-open';
+        else if (ticket.status === 'Closed') statusClass += ' status-closed';
+        else statusClass += ' status-pending';
+
+        // Determine priority class
+        let priorityClass = 'priority-badge';
+        if (ticket.priority === 'Critical') priorityClass += ' priority-critical';
+        else priorityClass += ' priority-low';
+
+        // Format Date (use created_at or just a placeholder if null)
+        const dateStr = ticket.created_at ? new Date(ticket.created_at).toLocaleDateString() : 'N/A';
+
+        row.innerHTML = `
+            <td>
+                <div style="font-weight: 500;">${ticket.customer_name}</div>
+                <div style="font-size: 12px; color: #888;">${ticket.email}</div>
+            </td>
+            <td>
+                <div style="font-weight: 500;">${ticket.product_purchased}</div>
+                <div style="font-size: 12px; color: #888;">${ticket.issue_type}</div>
+            </td>
+            <td style="max-width: 200px;">
+                <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${ticket.issue_description}">
+                    ${ticket.issue_description}
+                </div>
+            </td>
+            <td><span class="${statusClass}">${ticket.status}</span></td>
+            <td><span class="${priorityClass}">${ticket.priority}</span></td>
+            <td style="color: #666;">${dateStr}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Load tickets on page load
+fetchTickets();

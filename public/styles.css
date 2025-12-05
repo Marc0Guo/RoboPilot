@@ -185,6 +185,82 @@ body {
     cursor: not-allowed;
 }
 
+/* Ticket Table Styles */
+.ticket-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+    overflow-x: auto; /* Allow horizontal scroll on small screens */
+}
+
+.ticket-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.ticket-table th, .ticket-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.ticket-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+    color: #555;
+    white-space: nowrap;
+}
+
+.ticket-table tr:last-child td {
+    border-bottom: none;
+}
+
+.ticket-table tr:hover {
+    background-color: #fdfdfd;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-open {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-pending {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.status-closed {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+
+.priority-badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.priority-critical {
+    color: #d32f2f;
+    background-color: #ffebee;
+}
+
+.priority-low {
+    color: #616161;
+    background-color: #f5f5f5;
+}
+
 /* Right Panel: Chat Interface (35-40%) */
 .chat-panel {
     flex: 3.5; /* 35% width */
@@ -368,6 +444,24 @@ body {
     border-radius: 3px;
 }
 
+/* FAQ List Styles */
+.faq-list {
+    margin-top: 12px;
+    padding-left: 20px;
+    margin-bottom: 4px;
+}
+
+.faq-list li {
+    cursor: pointer;
+    color: #4a7dff;
+    text-decoration: underline;
+    margin-bottom: 8px;
+}
+
+.faq-list li:hover {
+    color: #3a68e0;
+}
+
 /* Responsive Design (< 768px) */
 @media (max-width: 768px) {
     body {
@@ -418,6 +512,10 @@ body {
 
         .action-btn {
             align-self: center;
+        }
+
+        .ticket-table {
+            font-size: 12px; /* Smaller text for table on small screens */
         }
     }
 }

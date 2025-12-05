@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 </head>
 
 <body>
@@ -25,12 +27,12 @@
                     <!-- Primary Product Card -->
                     <div class="product-card primary">
                         <div class="product-image">
-                            <img src="ilifea4s.jpg" alt="ILIFE A4s Robot Vacuum">
+                            <img src="1.jpg" alt="ILIFE A4s Robot Vacuum">
                         </div>
                         <div class="product-info">
-                            <h3>ILIFE A4s Robot Vacuum</h3>
+                            <h3>Black+ Decker Robot Vacuum</h3>
                             <p class="product-desc">Purchased on 2024-05-01</p>
-                            <button class="action-btn" onclick="focusChat()">Connect to Support</button>
+                            <a href="manual.pdf" download="manual.pdf" class="action-btn" style="text-decoration: none; display: inline-block;">Download Manual</a>
                         </div>
                     </div>
 
@@ -103,6 +105,27 @@
                     </div>
                 </div>
             </section>
+
+            <section class="section-container">
+                <h3 class="section-title">Support Tickets</h3>
+                <div class="ticket-container">
+                    <table class="ticket-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Issue</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ticketTableBody">
+                            <!-- Tickets will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </div>
 
         <!-- Right Panel: Chat Interface -->
@@ -126,6 +149,11 @@
                 <div class="message bot fade-in">
                     <div class="message-content">
                         Hello! I'm your Robot Vacuum support assistant. How can I help you today?
+                        <ul class="faq-list">
+                            <li onclick="sendFAQ(this.textContent)">My vacuum is overheated, which expert should I go?</li>
+                            <li onclick="sendFAQ(this.textContent)">Why my Black+ Decker Unable to connect to Wi-Fi?</li>
+                            <li onclick="sendFAQ(this.textContent)">I'm Marisa Obrien, check my ticket status</li>
+                        </ul>
                     </div>
                     <div class="timestamp">Just now</div>
                 </div>
